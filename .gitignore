@@ -33,3 +33,5 @@ node_modules
 __*
 *.bak
 public/bower
+public/bundle.js
+public/main.css
