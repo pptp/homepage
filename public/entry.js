@@ -12,11 +12,13 @@ const openPage = page => {
   page.addClass('active');
   window.location.hash = page.data('page');
 
-  event.preventDefault();
+  return true;
 }
 
 $(document).on('click', '.page', event => {
-  openPage($(event.target).parents('.page'));
+  if (openPage($(event.target).parents('.page'))) {
+    event.preventDefault();
+  }
 });
 
 if (window.location.hash) {
