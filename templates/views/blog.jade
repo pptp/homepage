@@ -1,0 +1,73 @@
+extends ../layouts/default
+
+block content
+  .page.multi.about(data-page="about")
+    .page-wrapper
+      .page-title
+        a.header(href="/#{language}/#about")
+          i.fa.fa-user-o(aria-hidden='true')
+          | #{ __('about') }
+        .lang-switcher
+          a(href='/#{nextLang}/#about') #{ __('lang.switch') }
+      .page-content
+        .about-wrapper
+          h1 #{ __('my_name') }
+          .left-block 
+            if language == 'ru'
+              include about/ru.jade
+            if language == 'en'
+              include about/en.jade
+          .right-block
+            //- .my-photo
+            //- |asd
+            
+  .page.multi.blog.active(data-page="blog")
+    .page-wrapper
+
+      .page-title
+        a.header(href="/#{language}/#blog")
+          i.fa.fa-file-text-o(aria-hidden='true')
+          | #{ __('blog') }
+        .lang-switcher
+          a(href='/#{nextLang}/#blog') #{ __('lang.switch') }
+
+      .page-content
+        if data.posts.results.length
+          .left-col
+            .articles
+              .article-sizer
+              each post in data.posts.results
+                .article
+                  a.article-wrapper(href='/#{language}/blog/post/' + post.slug)
+                    if post.image.exists
+                      .header-wrapper
+                        .image-wrapper
+                          img(src=post.image.url)
+                    .content-wrapper
+                      h1= post.title
+
+                      if post.publishedDate
+                        .meta #{ __('post.publishedAt') } #{post._.publishedDate.format('YYYY/MM/DD')} 
+                      .body!= post.content.brief
+
+        if data.categories.length
+          .right-col
+            .right-col-container
+              h1 #{ __('categories') }
+              div.categories.list
+                a.list-item(href='/#{language}/')
+                    span.list-item-title #{ __('categories.all') }
+
+                each cat in data.categories
+                  a.list-item(href='/#{language}/blog/cat/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : '')
+                    span.list-item-title= cat.name
+
+      if data.posts.totalPages > 1
+        .page-footer
+          .pagination
+            if data.posts.previous
+              a.small-button.pagination-item.page-prev(href='?page=' + data.posts.previous) #{ __('page.prev') }
+            each p, i in data.posts.pages
+              a.small-button.pagination-item.page-number(class=data.posts.currentPage == p ? 'active' : null, href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
+            if data.posts.next
+              a.small-button.pagination-item.page-next(href='?page=' + data.posts.next) #{ __('page.next') }

@@ -1,0 +1,60 @@
+@import "../colors.less";
+
+
+@color-button: @dark-yellow;
+
+// Mixins
+
+.button-mixin {
+  background-color: @color-button;
+  display: inline-block;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.button-hover-mixin {
+  background-color: #fff;
+  color: @color-button;
+}
+
+.button-size-mixin {
+  padding: 10px 15px;
+  border: 2px solid @color-button;
+}
+
+.button-size-small-mixin {
+  box-sizing: content-box;
+  min-width: 20px;
+  min-height: 20px;
+  border: 1px solid @color-button;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8em;
+}
+
+
+// Classes
+
+
+
+.button {
+  .button-mixin;
+  .button-size-mixin;
+  &.active,
+  &:hover {
+    .button-hover-mixin;
+  }
+}
+
+.small-button {
+  .button-mixin;
+  .button-size-small-mixin;
+  
+  &.active,
+  &:hover {
+    .button-hover-mixin;
+  }
+}

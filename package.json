@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "async": "^1.5.0",
+    "css-loader": "^0.26.1",
+    "dotenv": "^2.0.0",
+    "i18n": "^0.8.3",
+    "imports-loader": "^0.7.1",
+    "jade-i18n": "^0.6.2",
+    "keystone": "^0.3.19",
+    "less-loader": "^2.2.3",
+    "lodash": "^4.13.1",
+    "normalize.css": "^5.0.0",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.13.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.12.0",
+    "eslint-config-keystone": "^2.3.1",
+    "eslint-plugin-react": "^5.1.1",
+    "extract-text-webpack-plugin": "^2.0.0",
+    "webpack": "^2.2.1"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "start": "node keystone.js"
+  }
+}

@@ -1,0 +1,34 @@
+extends ../layouts/default
+
+block content
+  .page.single.blog
+    .page-wrapper
+
+
+      .page-title
+        a.header(href="/#{language}/")
+          i.fa.fa-file-text-o(aria-hidden='true')
+          | #{ __('blog') }
+
+
+      .page-content
+
+        .col
+          .article
+            .article-wrapper
+              h1= data.post.title
+
+              if data.post.publishedDate
+                .meta #{ __('post.publishedAt') } #{data.post._.publishedDate.format('YYYY/MM/DD')}
+
+              if data.post.categories && data.post.categories.length
+                .tags
+                  each cat in data.post.categories
+                    .tag
+                      a.tag-title(href='/#{language}/blog/cat/' + cat.key)= cat.name
+
+              .article-content
+                img(src=data.post._.image.fit(640, 480))
+                .body!= data.post.content.full
+
+        

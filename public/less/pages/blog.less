@@ -1,0 +1,229 @@
+@import "../colors.less";
+
+@color-head: @color-primary-1;
+@color-body: @color-primary-2;
+@color-meta: @color-primary-3;
+
+@media (min-width: @screen-sm-min) {
+}
+
+@media (min-width: @screen-md-min) {
+}
+
+@media (min-width: @screen-lg-min) {
+}
+
+
+@right-col-width: 300px;
+
+
+.page.blog {
+
+  .article-wrapper {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  &.multi {
+    .articles {
+      position: relative;
+    }
+
+    .article-sizer,
+    .article {
+      width: 100%;
+      @media (min-width: @screen-lg-min) {
+        width: 330px;
+        .header-wrapper {
+          height: 175px;
+        }
+      }
+      @media (min-width: @screen-xl-min) {
+        width: 450px;
+        .header-wrapper {
+          height: 175px;
+        }
+      }
+      @media (min-width: @screen-xxl-min) {
+        width: 550px;
+        .header-wrapper {
+          height: 175px;
+        }
+      }
+    }
+    .article {
+      float: left;
+
+      padding: 10px;
+      text-align: justify;
+      
+      cursor: pointer;
+
+      .header-wrapper {
+        position: relative;
+        height: 200px;
+
+        .image-wrapper {
+          position: absolute;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+
+      .content-wrapper {
+        padding: 1em;
+      }
+
+      
+
+      .article-wrapper {
+        overflow: hidden;
+        width: 100%;
+
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+        &:hover {
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+      }
+    }
+
+    .page-content {
+      .left-col {
+        @media (min-width: @screen-md-min) {
+        }
+        padding-right: 50px;
+      }
+    }
+  }
+
+  &.single {
+    .page-content {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      .col {
+        width: 800px;
+
+        .article-content {
+          padding-top: 1em;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  .page-content {
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column-reverse;
+    
+    @media (min-width: @screen-md-min) {
+      flex-direction: row;
+    }
+
+    .left-col {
+      flex: 1 1 auto;
+      padding-right: 50px;
+    }
+
+    .right-col {
+      flex: 0 0 @right-col-width;
+      
+      position: relative;
+      @media (min-width: @screen-md-min) {
+        position: static;
+      }
+
+      .categories {
+        margin-top: 20px;
+      }
+
+      .right-col-container {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        @media (min-width: @screen-md-min) {
+          width: @right-col-width;
+          top: inherit;
+        }
+      }
+    }
+
+
+    .articles {
+    }
+
+    .article {
+      h1 {
+        color: @color-head;
+        margin-bottom: .5em;
+      }
+      .meta {
+        color: @color-meta;
+        font-size: .8em;
+        padding: 0.2em 0;
+      }
+      .body {
+        color: @color-body;
+        // margin: 1em;
+        line-height: 1.5em
+      }
+      .tags {
+        color: @color-meta;
+        a {
+          color: @color-meta;
+        }
+        font-size: 0.8em;
+        padding: 0.2em 0;
+        .tag {
+          &:after {
+            content: ",";
+            padding-right: .2em;
+          }
+          &:last-child:after {
+            content: "";
+          }
+        }
+
+      }
+    }
+  }
+
+
+  .pagination {
+    display: flex;
+    flex-direction: row;
+    a {
+      text-decoration: none;
+    }
+    
+    &>.pagination-item {
+      margin: 0 2px;
+    }
+
+    &>.page-prev,
+    &>.page-next {
+      min-width: 50px;
+    }
+
+  }
+}

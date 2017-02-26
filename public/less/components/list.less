@@ -1,0 +1,41 @@
+@import "../colors.less";
+@import "./buttons.less";
+
+@color-list: @color-primary-3;
+@color-2-list: @dark-yellow;
+
+.list {
+  margin: 0;
+  padding-left: 0;
+  &>.list-item {
+    list-style-type: none;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 4px;
+    text-decoration: none;
+
+    &>.list-item-title {
+      flex: 1 1 auto;
+      color: @color-list;
+    }
+    &>.list-item-badge {
+      // flex: 0 0 50px;
+      .button-mixin;
+      .button-size-small-mixin
+    }
+
+    &:hover,
+    &.active {
+      background-color: @color-2-list;
+      &>.list-item-title {
+        color: #fff;
+      }
+      &>.list-item-badge {
+        background-color: #fff;
+        .button-hover-mixin;
+      }
+    }
+  }
+}
