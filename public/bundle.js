@@ -2461,6 +2461,8 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */(function($) {__webpack_require__(2);
 var Masonry = __webpack_require__(3);
 
+console.log('webhook 1');
+
 const openPage = page => {
   // const page = $(pageName).parents('.page');
 
