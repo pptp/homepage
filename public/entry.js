@@ -1,7 +1,7 @@
 require('./less/common.less');
 var Masonry = require('masonry-layout');
 
-console.log('webhook 2');
+console.log('webhook 3');
 
 const openPage = page => {
   // const page = $(pageName).parents('.page');
